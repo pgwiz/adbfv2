@@ -1,0 +1,76 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "adb-helper"
+version = "1.0.0"
+description = "Advanced ADB + Fastboot Desktop Application with Safety-First Design"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "ADB Helper Project", email = "contact@adbhelper.local"}
+]
+keywords = ["adb", "fastboot", "android", "debugging", "gui", "desktop"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Debuggers",
+    "Topic :: System :: Hardware",
+    "Topic :: Utilities",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "PyQt6>=6.4.0",
+    "cryptography>=3.4.8",
+    "keyring>=23.0.0",
+    "psutil>=5.8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-qt>=4.0.0",
+    "black>=22.0.0",
+    "flake8>=4.0.0",
+    "mypy>=0.950",
+    "pyinstaller>=5.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/adbhelper/adb-helper"
+Documentation = "https://github.com/adbhelper/adb-helper/docs"
+Repository = "https://github.com/adbhelper/adb-helper.git"
+"Bug Tracker" = "https://github.com/adbhelper/adb-helper/issues"
+
+[project.scripts]
+adb-helper = "adb_helper.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["adb_helper*"]
+
+[tool.black]
+line-length = 100
+target-version = ['py38']
+include = '\.pyi?$'
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]

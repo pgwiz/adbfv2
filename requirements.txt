@@ -1,0 +1,4 @@
+PyQt6>=6.4.0
+cryptography>=3.4.8
+keyring>=23.0.0
+psutil>=5.8.0
